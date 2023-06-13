@@ -1,0 +1,26 @@
+{
+  "name": "yummybytes",
+  "private": true,
+  "packageManager": "yarn@3.6.0",
+  "engines": {
+    "node": "18.16.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "node_modules/.bin/prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types",
+    "dev:check": ".bin/check-development-environment",
+    "dev": "turbo run dev",
+    "build": "turbo run build"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.10.3",
+    "eslint-config-custom": "workspace:^",
+    "turbo": "^1.10.3",
+    "typescript": "^5.1.3"
+  }
+}
