@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 42 54;
+    --foreground: 248 248 242;
+
+    --header: 43 45 58;
+    --footer: 38 39 51;
+
+    --border: 57 60 77;
+    --input: 57 60 77;
+    --ring: 57 60 77;
+
+    --primary: 189 147 249;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 255 121 198;
+    --secondary-foreground: 255 255 255;
+
+    --accent: 57 60 77;
+    --accent-foreground: 248 248 242;
+
+    --destructive: 255 85 85;
+    --destructive-foreground: 248 248 242;
+
+    --muted: 57 60 77;
+    --muted-foreground: 248 248 242;
+
+    --card: 43 45 58;
+    --card-foreground: 248 248 242;
+
+    --popover: 43 45 58;
+    --popover-foreground: 248 248 242;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
