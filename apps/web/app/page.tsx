@@ -1,6 +1,3 @@
-// package
-import { Button, Card, CardHeader, CardTitle, CardContent } from 'ui';
-
 /**
  * Page
  */
