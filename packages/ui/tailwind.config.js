@@ -13,7 +13,11 @@ module.exports = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1280px',
       },
     },
     extend: {
@@ -65,7 +69,7 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         serif: ['var(--font-secular-one)', ...fontFamily.serif],
-        mono: ['var(--font-space-mono)', ...fontFamily.mono],
+        mono: ['var(--font-jetbrains-mono)', ...fontFamily.mono],
       },
       keyframes: {
         'accordion-down': {

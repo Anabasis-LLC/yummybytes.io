@@ -1,8 +1,10 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 
 import { useWindowEvent } from './use-window-event';
 
-interface ScrollPosition {
+export interface ScrollPosition {
   x: number;
   y: number;
 }
@@ -28,6 +30,10 @@ const scrollTo = ({ x, y }: Partial<ScrollPosition>) => {
     window.scrollTo(scrollOptions);
   }
 };
+
+/**
+ * useWindowScroll
+ */
 
 export function useWindowScroll() {
   const [position, setPosition] = useState<ScrollPosition>({ x: 0, y: 0 });

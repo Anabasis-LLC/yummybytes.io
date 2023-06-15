@@ -1,5 +1,5 @@
 // 3rd party
-import { Inter, Secular_One, Space_Mono } from 'next/font/google';
+import { Inter, Secular_One, JetBrains_Mono } from 'next/font/google';
 
 // lib
 import { Shell } from '../components/shell';
@@ -24,9 +24,9 @@ const serif = Secular_One({
   display: 'swap',
 });
 
-const mono = Space_Mono({
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-jetbrains-mono',
   weight: ['400', '700'],
   display: 'swap',
 });
