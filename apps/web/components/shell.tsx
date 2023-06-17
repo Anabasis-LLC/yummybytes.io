@@ -1,5 +1,5 @@
-// 3rd party
-import { ReactNode } from 'react';
+// package
+import { cn } from 'ui';
 
 // lib
 import { Header } from './header';
@@ -9,16 +9,24 @@ import { Footer } from './footer';
  * Shell
  */
 
-export type ShellProps = {
-  children: ReactNode;
+export type ShellProps = React.HTMLAttributes<HTMLDivElement> & {
+  container?: boolean;
 };
 
-export const Shell = ({ children }: ShellProps) => {
+export const Shell = ({
+  className,
+  container = true,
+  children,
+}: ShellProps) => {
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className={cn('flex flex-col h-full w-full', className)}>
       <Header />
-      <div className="py-5">
-        <div className="container mx-auto">{children}</div>
+      <div
+        className={cn({
+          'container mx-auto mt-20 p-10 min-h-[300px]': container,
+        })}
+      >
+        {children}
       </div>
       <Footer />
     </div>

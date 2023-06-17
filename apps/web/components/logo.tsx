@@ -42,9 +42,10 @@ export const Logo = () => {
       </Link>
       <Link
         href="/"
-        className="font-serif text-2xl text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-sky-300 to-yellow-300 hover:opacity-75 relative active:top-px"
+        className="font-serif hover:underline active:opacity-80 relative active:top-px"
       >
-        YummyBytes
+        <span className="font-normal">Yummy</span>
+        <span className="font-bold">Bytes</span>
       </Link>
     </div>
   );

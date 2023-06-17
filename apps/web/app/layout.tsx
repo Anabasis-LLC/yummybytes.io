@@ -1,8 +1,5 @@
 // 3rd party
-import { Inter, Secular_One, JetBrains_Mono } from 'next/font/google';
-
-// lib
-import { Shell } from '../components/shell';
+import { Inter, Poppins, JetBrains_Mono } from 'next/font/google';
 
 // css
 import 'ui/globals.css';
@@ -13,20 +10,20 @@ import 'ui/globals.css';
 
 const sans = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
   display: 'swap',
 });
 
-const serif = Secular_One({
+const serif = Poppins({
   subsets: ['latin'],
-  weight: '400',
-  variable: '--font-secular-one',
+  weight: ['500', '600', '700'],
+  variable: '--font-serif',
   display: 'swap',
 });
 
 const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
+  variable: '--font-mono',
   weight: ['400', '700'],
   display: 'swap',
 });
@@ -45,9 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${sans.variable} ${serif.variable} ${mono.variable} h-full`}
     >
-      <body className="h-full">
-        <Shell>{children}</Shell>
-      </body>
+      <body className="h-full">{children}</body>
     </html>
   );
 }
