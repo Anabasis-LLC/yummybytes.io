@@ -4,16 +4,20 @@
 
 @layer base {
   :root {
+    /* https://github.com/dracula/dracula-theme  */
     --background: 40 42 54;
     --foreground: 248 248 242;
+    --selection: 68 71 90;
+    --comment: 98 114 164;
+    --cyan: 139 233 253;
+    --green: 80 250 123;
+    --orange: 255 184 108;
+    --pink: 255 121 198;
+    --purple: 189 147 249;
+    --red: 255 85 85;
+    --yellow: 241 250 140;
 
-    --header: 43 45 58;
-    --footer: 38 39 51;
-
-    --border: 57 60 77;
-    --input: 57 60 77;
-    --ring: 57 60 77;
-
+    /* https://github.com/shadcn/ui/blob/main/apps/www/styles/globals.css */
     --primary: 189 147 249;
     --primary-foreground: 255 255 255;
 
@@ -41,10 +45,60 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-white/5;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
+}
+
+/**
+ * Prevent the scrollbar from shifting page contents.
+ */
+
+/* html {
+  overflow-y: scroll;
+} */
+
+/**
+ * Scrollbar
+ */
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(68, 71, 90, 0.2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(68, 71, 90, 0.5);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(68, 71, 90, 0.7);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(68, 71, 90, 0.9);
+}
+
+/**
+ * Autofill
+ */
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #f8f8f2;
+  -webkit-box-shadow: 0 0 0px 1000px #282a36 inset;
+  background-color: transparent !important;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f8f8f2;
+  -webkit-box-shadow: rgb(189, 147, 249) 0px 0px 0px 2px,
+    0 0 0px 1000px #282a36 inset;
+  background-color: transparent !important;
+  caret-color: white;
 }

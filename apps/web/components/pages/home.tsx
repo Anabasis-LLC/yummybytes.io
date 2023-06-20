@@ -2,7 +2,12 @@
 
 // 3rd party
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { Sparkle, Layers, ArrowDownSquare } from 'lucide-react';
 
 // package
@@ -10,6 +15,7 @@ import { Button, Card, CardContent, CardHeader, CardTitle, Screen } from 'ui';
 
 // lib
 import { Popsicle } from '../assets';
+import { GetStarted } from '../get-started';
 
 /**
  * Home
@@ -73,7 +79,7 @@ export const Home = () => {
           <CardHeader>
             <CardTitle>
               <div className="flex items-center gap-2">
-                <Sparkle className="text-primary" color="rgb(68, 71, 90)" />
+                <Sparkle className="text-primary" color="rgb(139, 233, 253)" />
                 <span>Why YummyBytes? What&apos;s different?</span>
               </div>
             </CardTitle>
@@ -86,14 +92,18 @@ export const Home = () => {
               behavior: 'smooth',
             })
           }
-          className="mt-10"
+          className="mt-10 animate-bounce"
         >
-          <ArrowDownSquare size={32} color="rgb(68, 71, 90)" />
+          <ArrowDownSquare size={32} color="rgb(139, 233, 253)" />
         </Button>
       </Screen>
       {SECTIONS.map(({ title, content, card, button }, i) => (
-        <FadingScreen key={i} ref={screenRefs.current[i]} className="p-10">
-          <Card className="w-full md:w-1/2 border-0" style={card.style}>
+        <FadingScreen
+          key={i}
+          ref={screenRefs.current[i]}
+          className="overflow-hidden p-10 border border-b-red-50"
+        >
+          <Card className="w-full md:w-1/2 border-0 mb-10" style={card.style}>
             <CardHeader>
               <CardTitle>
                 <div className="flex items-center gap-2">
@@ -107,9 +117,11 @@ export const Home = () => {
             </CardContent>
           </Card>
           {i === SECTIONS.length - 1 ? (
-            <Button variant="link" onClick={() => {}} className="mt-10">
-              Let&apos;s Go!
-            </Button>
+            <GetStarted>
+              <Button variant="link" size="lg">
+                Let&apos;s Go!
+              </Button>
+            </GetStarted>
           ) : (
             <Button
               variant="link"
@@ -118,7 +130,6 @@ export const Home = () => {
                   behavior: 'smooth',
                 })
               }
-              className="mt-10"
             >
               <ArrowDownSquare size="32" style={button.style} />
             </Button>
@@ -164,9 +175,11 @@ const Hero = () => (
           good and is good for you.
           <span className="text-2xl ml-1">😋</span>
         </h2>
-        <Button variant="secondary" size="lg" className="font-serif text-xl">
-          Get Started
-        </Button>
+        <GetStarted>
+          <Button variant="secondary" size="lg">
+            Get Started
+          </Button>
+        </GetStarted>
       </div>
     </div>
     <div className="hidden md:block w-2/5">
@@ -182,19 +195,35 @@ const Hero = () => (
 const FadingScreen = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ children, ...props }, ref) => (
-  <Screen ref={ref} {...props}>
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{
-        ease: 'easeIn',
-        delay: 0.1,
-      }}
-      className="flex flex-col items-center"
-    >
-      {children}
-    </motion.div>
-  </Screen>
-));
+>(({ children, ...props }, ref) => {
+  const target = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target,
+    // Progress starts when when the "start" of the target reaches the "end"
+    // of the container.
+    // Progress ends when the "start" of the target reaches the "center" of
+    // the container.
+    // https://www.framer.com/motion/use-scroll/##scroll-offsets
+    offset: ['start end', 'start center'],
+  });
+
+  const scale = useTransform(
+    scrollYProgress,
+    (progress) => 1.0 + -0.1 * (1.0 - progress),
+  );
+
+  return (
+    <Screen ref={ref} {...props}>
+      <div ref={target}>
+        <motion.div
+          style={{ opacity: scrollYProgress, scale }}
+          className="flex flex-col items-center"
+        >
+          {children}
+        </motion.div>
+      </div>
+    </Screen>
+  );
+});
 FadingScreen.displayName = 'FadingScreen';

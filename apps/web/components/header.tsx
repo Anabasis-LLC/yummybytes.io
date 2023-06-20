@@ -4,23 +4,12 @@
 import Link from 'next/link';
 
 // package
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
-  cn,
-} from 'ui';
+import { Button, cn } from 'ui';
 import { useWindowScroll } from 'hooks';
 
 // lib
 import { Logo } from './logo';
+import { GetStarted } from './get-started';
 
 export const Header = () => {
   const [position] = useWindowScroll();
@@ -28,8 +17,8 @@ export const Header = () => {
 
   return (
     <div
-      className={cn('fixed w-full z-10 top-0', {
-        'bg-header/90 backdrop-blur-md border-b border-black/10': isDetached,
+      className={cn('fixed z-10 w-screen', {
+        'bg-selection/10 backdrop-blur-md border-b border-black/10': isDetached,
       })}
     >
       <div className="container flex items-center justify-between h-20">
@@ -48,28 +37,9 @@ export const Header = () => {
             <Button variant="ghost" asChild>
               <Link href="/pro">PRO</Link>
             </Button>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                {isDetached && (
-                  <Button variant="secondary" className="font-serif">
-                    Get Started
-                  </Button>
-                )}
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers!
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>Continue</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <GetStarted>
+              {isDetached && <Button variant="secondary">Get Started</Button>}
+            </GetStarted>
           </div>
         </div>
       </div>

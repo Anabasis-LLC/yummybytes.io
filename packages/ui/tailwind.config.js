@@ -24,13 +24,15 @@ module.exports = {
       colors: {
         background: 'rgb(var(--background))',
         foreground: 'rgb(var(--foreground))',
-
-        header: 'rgb(var(--header))',
-        footer: 'rgb(var(--footer))',
-
-        border: 'rgb(var(--border))',
-        input: 'rgb(var(--input))',
-        ring: 'rgb(var(--ring))',
+        selection: 'rgb(var(--selection))',
+        comment: 'rgb(var(--comment))',
+        cyan: 'rgb(var(--cyan))',
+        green: 'rgb(var(--green))',
+        orange: 'rgb(var(--orange))',
+        pink: 'rgb(var(--pink))',
+        purple: 'rgb(var(--purple))',
+        red: 'rgb(var(--red))',
+        yellow: 'rgb(var(--yellow))',
 
         primary: {
           DEFAULT: 'rgb(var(--primary))',
