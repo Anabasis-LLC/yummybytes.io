@@ -1,12 +1,13 @@
 'use client';
 
 // 3rd party
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
+  AnimationPlaybackControls,
   motion,
-  useMotionValueEvent,
   useScroll,
   useTransform,
+  useAnimate,
 } from 'framer-motion';
 import { Sparkle, Layers, ArrowDownSquare } from 'lucide-react';
 
@@ -14,7 +15,7 @@ import { Sparkle, Layers, ArrowDownSquare } from 'lucide-react';
 import { Button, Card, CardContent, CardHeader, CardTitle, Screen } from 'ui';
 
 // lib
-import { Popsicle } from '../assets';
+import { Popsicle, PopsicleChat } from '../assets';
 import { GetStarted } from '../get-started';
 
 /**
@@ -163,30 +164,79 @@ const Glow = () => (
  * Hero
  */
 
-const Hero = () => (
-  <div className="flex flex-row items-center">
-    <div className="w-full md:w-3/5">
-      <div className="flex flex-col gap-5">
-        <h1 className="text-5xl font-serif">
-          Learn to code with tasty recipes & tutorials.
-        </h1>
-        <h2 className="text-lg font-semibold">
-          Level up your programming skills with byte-sized content that tastes
-          good and is good for you.
-          <span className="text-2xl ml-1">😋</span>
-        </h2>
-        <GetStarted>
-          <Button variant="secondary" size="lg">
-            Get Started
-          </Button>
-        </GetStarted>
+const Hero = () => {
+  const [scope, animate] = useAnimate();
+  const animation = useRef<AnimationPlaybackControls>();
+
+  return (
+    <div className="flex flex-row items-center">
+      <div className="w-full md:w-3/5">
+        <div className="flex flex-col gap-5">
+          <h1 className="text-5xl font-serif">
+            Learn to code with tasty recipes & tutorials.
+          </h1>
+          <h2 className="text-lg font-semibold">
+            Level up your programming skills with byte-sized content that tastes
+            good and is good for you.
+            <span className="text-2xl ml-1">😋</span>
+          </h2>
+          <GetStarted>
+            <Button variant="secondary" size="lg">
+              Get Started
+            </Button>
+          </GetStarted>
+        </div>
+      </div>
+      <div className="hidden md:block w-2/5">
+        <motion.div
+          whileHover={{
+            opacity: 0.8,
+          }}
+          whileTap={{
+            scale: 0.9,
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 500,
+            damping: 20,
+          }}
+          className="w-28 mx-auto"
+        >
+          <Popsicle
+            className="relative"
+            onClick={() => {
+              if (animation.current) {
+                animation.current.play();
+              } else {
+                animation.current = animate(
+                  scope.current,
+                  {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                  },
+                  {
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 20,
+                  },
+                );
+              }
+            }}
+          >
+            <motion.div
+              ref={scope}
+              initial={{ opacity: 0, x: -20, y: 20 }}
+              className="absolute -z-10 -top-[42px] -right-[42px]"
+            >
+              <PopsicleChat className="w-16" />
+            </motion.div>
+          </Popsicle>
+        </motion.div>
       </div>
     </div>
-    <div className="hidden md:block w-2/5">
-      <Popsicle className="w-28 mx-auto" />
-    </div>
-  </div>
-);
+  );
+};
 
 /**
  * FadingScreen
