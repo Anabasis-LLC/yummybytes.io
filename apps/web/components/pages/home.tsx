@@ -1,13 +1,12 @@
 'use client';
 
 // 3rd party
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   AnimationPlaybackControls,
   motion,
-  useScroll,
-  useTransform,
   useAnimate,
+  useInView,
 } from 'framer-motion';
 import { Sparkle, Layers, ArrowDownSquare } from 'lucide-react';
 
@@ -247,27 +246,32 @@ const FadingScreen = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ children, ...props }, ref) => {
   const target = useRef(null);
+  const isAllInView = useInView(target, { amount: 'all' });
+  const isSomeInView = useInView(target, { amount: 'some' });
+  const [scope, animate] = useAnimate();
 
-  const { scrollYProgress } = useScroll({
-    target,
-    // Progress starts when when the "start" of the target reaches the "end"
-    // of the container.
-    // Progress ends when the "start" of the target reaches the "center" of
-    // the container.
-    // https://www.framer.com/motion/use-scroll/##scroll-offsets
-    offset: ['start end', 'start center'],
-  });
-
-  const scale = useTransform(
-    scrollYProgress,
-    (progress) => 1.0 + -0.1 * (1.0 - progress),
-  );
+  useEffect(() => {
+    if (isAllInView) {
+      animate(
+        scope.current,
+        { opacity: 1, scale: 1, y: 0 },
+        { type: 'spring', stiffness: 150, damping: 20 },
+      );
+    } else if (!isSomeInView) {
+      animate(
+        scope.current,
+        { opacity: 0, scale: 1.2, y: 50 },
+        { duration: 0 },
+      );
+    }
+  }, [isAllInView, isSomeInView, scope, animate]);
 
   return (
     <Screen ref={ref} {...props}>
       <div ref={target}>
         <motion.div
-          style={{ opacity: scrollYProgress, scale }}
+          ref={scope}
+          initial={{ opacity: 0, scale: 1.2, y: 50 }}
           className="flex flex-col items-center"
         >
           {children}
