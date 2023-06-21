@@ -101,7 +101,7 @@ export const Home = () => {
         <FadingScreen
           key={i}
           ref={screenRefs.current[i]}
-          className="overflow-hidden p-10 border border-b-red-50"
+          className="overflow-hidden"
         >
           <Card className="w-full md:w-1/2 border-0 mb-10" style={card.style}>
             <CardHeader>
