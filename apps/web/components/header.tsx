@@ -50,7 +50,7 @@ export const Header = () => {
               <Link href="/pro">PRO</Link>
             </Button>
             <GetStarted>
-              <Button variant="secondary">Get Started</Button>
+              <Button variant="pink">Get Started</Button>
             </GetStarted>
           </div>
         </div>

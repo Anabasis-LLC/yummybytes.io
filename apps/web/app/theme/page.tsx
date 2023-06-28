@@ -1,5 +1,19 @@
 // package
-import { Button, Card, CardHeader, CardTitle, CardContent } from 'ui';
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Input,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from 'ui';
 
 /**
  * Page
@@ -7,21 +21,24 @@ import { Button, Card, CardHeader, CardTitle, CardContent } from 'ui';
 
 export default function Page() {
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row gap-4 p-4">
       <Card>
         <CardHeader>
           <CardTitle>Colors</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 text-sm font-bold">
-          <div className="bg-background p-3">Background</div>
-          <div className="bg-foreground p-3 text-background">Foreground</div>
-          <div className="bg-primary p-3">Primary</div>
-          <div className="bg-secondary p-3">Secondary</div>
-          <div className="bg-accent p-3">Accent</div>
-          <div className="bg-destructive p-3">Destructive</div>
-          <div className="bg-muted p-3">Muted</div>
-          <div className="bg-card p-3 border border-black/20">Card</div>
-          <div className="bg-popover p-3 border border-black/20">Popover</div>
+        <CardContent className="flex flex-col gap-4 text-sm font-bold text-black/50">
+          <div className="p-3 bg-background">Background</div>
+          <div className="p-3 bg-foreground">Foreground</div>
+          <div className="p-3 bg-selection">Selection</div>
+          <div className="p-3 bg-comment">Comment</div>
+          <div className="p-3 bg-cyan">Cyan</div>
+          <div className="p-3 bg-green">Green</div>
+          <div className="p-3 bg-orange">Orange</div>
+          <div className="p-3 bg-pink">Pink</div>
+          <div className="p-3 bg-purple">Purple</div>
+          <div className="p-3 bg-red">Red</div>
+          <div className="p-3 bg-yellow">Yellow</div>
+          <div className="p-3 bg-muted">Muted</div>
         </CardContent>
       </Card>
       <Card>
@@ -29,24 +46,39 @@ export default function Page() {
           <CardTitle>Buttons</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <div>
-            <Button>Primary</Button>
-          </div>
-          <div>
-            <Button variant="secondary">Secondary</Button>
-          </div>
-          <div>
-            <Button variant="outline">Outline</Button>
-          </div>
-          <div>
-            <Button variant="ghost">Ghost</Button>
-          </div>
-          <div>
-            <Button variant="link">Link</Button>
-          </div>
-          <div>
-            <Button variant="destructive">Destructive</Button>
-          </div>
+          <Button variant="cyan">Cyan</Button>
+          <Button variant="green">Green</Button>
+          <Button variant="orange">Orange</Button>
+          <Button variant="pink">Pink</Button>
+          <Button variant="purple">Purple</Button>
+          <Button variant="red">Red</Button>
+          <Button variant="yellow">Yellow</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Form Input</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          <Input />
+          <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes">Grapes</SelectItem>
+                <SelectItem value="pineapple">Pineapple</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </CardContent>
       </Card>
     </div>

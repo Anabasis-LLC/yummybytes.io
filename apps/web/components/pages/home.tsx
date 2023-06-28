@@ -8,10 +8,24 @@ import {
   useAnimate,
   useInView,
 } from 'framer-motion';
-import { Sparkle, Layers, ArrowDownSquare } from 'lucide-react';
+import {
+  Sparkle,
+  Layers,
+  Cog,
+  PartyPopper,
+  ArrowDownSquare,
+} from 'lucide-react';
 
 // package
-import { Button, Card, CardContent, CardHeader, CardTitle, Screen } from 'ui';
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Screen,
+  cn,
+} from 'ui';
 
 // lib
 import { Popsicle, PopsicleChat } from '../assets';
@@ -27,11 +41,11 @@ const SECTIONS = [
     content:
       '<b>Learn how all of the pieces fit.</b> Exposure to every layer of an application gives you the foundation needed to truly understand how and why things work and take your skills to the next level.',
     card: {
-      style: { backgroundColor: 'rgba(255, 184, 108, 0.1)' },
-      icon: <Layers className="text-primary" color="rgb(255, 184, 108)" />,
+      className: 'bg-orange/5',
+      icon: <Layers className="text-orange" />,
     },
     button: {
-      style: { color: 'rgb(255, 184, 108)' },
+      className: 'text-orange',
     },
   },
   {
@@ -39,11 +53,11 @@ const SECTIONS = [
     content:
       '<b>Learn by building, not reading.</b> Project-based learning is essential because it bridges the gap between theory and practice, enabling you to apply knowledge in real-world scenarios.',
     card: {
-      style: { backgroundColor: 'rgba(255, 121, 198, 0.1)' },
-      icon: <Layers className="text-primary" color="rgb(255, 121, 198)" />,
+      className: 'bg-pink/5',
+      icon: <Cog className="text-pink" />,
     },
     button: {
-      style: { color: 'rgb(255, 121, 198)' },
+      className: 'text-pink',
     },
   },
   {
@@ -51,11 +65,11 @@ const SECTIONS = [
     content:
       "Building stuff is fun, so learning how to build stuff should be fun too. That's why YummyBytes content doesn't take itself too seriously and is heavy on easter eggs.",
     card: {
-      style: { backgroundColor: 'rgba(189, 147, 249, 0.1)' },
-      icon: <Layers className="text-primary" color="rgb(189, 147, 249)" />,
+      className: 'bg-purple/5',
+      icon: <PartyPopper className="text-purple" />,
     },
     button: {
-      style: { color: 'rgb(189, 147, 249)' },
+      className: 'text-purple',
     },
   },
 ];
@@ -67,19 +81,16 @@ export const Home = () => {
 
   return (
     <>
-      <Screen className="min-h-[1000px] p-10">
+      <Screen className="min-h-[800px] p-10">
         <div className="relative pb-32">
           <Glow />
           <Hero />
         </div>
-        <Card
-          className="w-full md:w-1/2 border-0"
-          style={{ backgroundColor: 'rgba(68, 71, 90, 0.1)' }}
-        >
+        <Card className="w-full md:w-1/2 border-0 bg-black/5">
           <CardHeader>
             <CardTitle>
               <div className="flex items-center gap-2">
-                <Sparkle className="text-primary" color="rgb(139, 233, 253)" />
+                <Sparkle className="text-cyan" />
                 <span>Why YummyBytes? What&apos;s different?</span>
               </div>
             </CardTitle>
@@ -94,7 +105,7 @@ export const Home = () => {
           }
           className="mt-10 animate-bounce"
         >
-          <ArrowDownSquare size={32} color="rgb(139, 233, 253)" />
+          <ArrowDownSquare size={32} className="text-cyan" />
         </Button>
       </Screen>
       {SECTIONS.map(({ title, content, card, button }, i) => (
@@ -103,7 +114,9 @@ export const Home = () => {
           ref={screenRefs.current[i]}
           className="overflow-hidden"
         >
-          <Card className="w-full md:w-1/2 border-0 mb-10" style={card.style}>
+          <Card
+            className={cn('w-full md:w-1/2 border-0 mb-10', card.className)}
+          >
             <CardHeader>
               <CardTitle>
                 <div className="flex items-center gap-2">
@@ -131,7 +144,7 @@ export const Home = () => {
                 })
               }
             >
-              <ArrowDownSquare size="32" style={button.style} />
+              <ArrowDownSquare size="32" className={button.className} />
             </Button>
           )}
         </FadingScreen>
@@ -150,7 +163,7 @@ const Glow = () => (
     aria-hidden="true"
   >
     <div
-      className="relative left-[calc(50%)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-primary to-secondary opacity-20"
+      className="relative left-[calc(50%)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-purple to-pink opacity-20"
       style={{
         clipPath:
           'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
@@ -180,7 +193,7 @@ const Hero = () => {
             <span className="text-2xl ml-1">😋</span>
           </h2>
           <GetStarted>
-            <Button variant="secondary" size="lg">
+            <Button variant="pink" size="lg">
               Get Started
             </Button>
           </GetStarted>
