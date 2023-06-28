@@ -255,7 +255,7 @@ const FadingScreen = React.forwardRef<
       animate(
         scope.current,
         { opacity: 1, scale: 1, y: 0 },
-        { type: 'spring', stiffness: 150, damping: 20 },
+        { type: 'spring', stiffness: 100, damping: 20 },
       );
     } else if (!isSomeInView) {
       animate(
