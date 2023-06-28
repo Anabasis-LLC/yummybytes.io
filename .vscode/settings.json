@@ -2,7 +2,6 @@
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.lint.unknownAtRules": "ignore",
-  "prettier.prettierPath": "./node_modules/prettier",
   "eslint.validate": ["typescript", "typescriptreact"],
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
