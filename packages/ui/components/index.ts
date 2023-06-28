@@ -7,3 +7,4 @@ export * from './input';
 export * from './label';
 export * from './screen';
 export * from './select';
+export * from './separator';
