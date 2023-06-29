@@ -725,6 +725,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@panva/hkdf@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@panva/hkdf@npm:1.1.1"
+  checksum: f0dd12903751d8792420353f809ed3c7de860cf506399759fff5f59f7acfef8a77e2b64012898cee7e5b047708fa0bd91dff5ef55a502bf8ea11aad9842160da
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -1417,6 +1424,13 @@ __metadata:
   bin:
     gen: dist/cli.js
   checksum: 458e5f48ce0b123ebc5b00e1ba19b3692ef07f47d8e2fbceba82f31c6bd8df40dfd9f49ed07335f560cef08469c9992778d6d14cee9eabfe4c9547fbfd335629
+  languageName: node
+  linkType: hard
+
+"@types/cookie@npm:^0":
+  version: 0.5.1
+  resolution: "@types/cookie@npm:0.5.1"
+  checksum: 9a8d60fc84797122bc399d6bd330fe5780dc7aab032321de705049ea925339f74658bfa418de483a625d51858770efef58df633ff2e20f1bdf7fbd74a52847e2
   languageName: node
   linkType: hard
 
@@ -2475,6 +2489,13 @@ __metadata:
     snake-case: ^2.1.0
     upper-case: ^1.1.1
   checksum: 893c793a425ebcd0744061c7f12650c655aae259b89d5654fb8eda42d22c3690716a4988ed03f2abe370b1ee7bfec44f8e4395e76e2f1458a8921982b15410ba
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "cookie@npm:0.5.0"
+  checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
   languageName: node
   linkType: hard
 
@@ -4823,6 +4844,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jose@npm:^4.14.4":
+  version: 4.14.4
+  resolution: "jose@npm:4.14.4"
+  checksum: 2d820a91a8fd97c05d8bc8eedc373b944a0cd7f5fe41063086da233d0473c73fb523912a9f026ea870782bd221f4a515f441a2d3af4de48c6f2c76dac5082377
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -4959,7 +4987,6 @@ __metadata:
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.2.6
     eslint-config-custom: "workspace:^"
-    lib: "workspace:^"
     prettier-config: "workspace:^"
     react: ^18.2.0
     zod: ^3.21.4
@@ -7831,12 +7858,16 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@hookform/resolvers": ^3.1.1
+    "@panva/hkdf": ^1.1.1
+    "@types/cookie": ^0
     "@types/node": ^20.3.2
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.2.6
+    cookie: ^0.5.0
     eslint-config-custom: "workspace:^"
     framer-motion: ^10.12.17
     hooks: "workspace:^"
+    jose: ^4.14.4
     lucide-react: ^0.256.0
     next: ^13.4.7
     prettier-config: "workspace:^"

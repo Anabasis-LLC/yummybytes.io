@@ -1,5 +1,5 @@
 // lib
-import { Shell } from '../../components/shell';
+import { Shell } from '@/components/shell';
 
 /**
  * Page

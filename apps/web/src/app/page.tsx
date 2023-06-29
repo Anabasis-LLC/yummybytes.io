@@ -1,6 +1,6 @@
 // lib
-import { Shell } from '../components/shell';
-import { Home } from '../components/pages/home';
+import { Shell } from '@/components/shell';
+import { Home } from '@/components/pages/home';
 
 /**
  * Page

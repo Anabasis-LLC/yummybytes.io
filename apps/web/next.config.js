@@ -1,4 +1,9 @@
 module.exports = {
-  reactStrictMode: true,
-  transpilePackages: ['ui', 'hooks'],
+  experimental: {
+    typedRoutes: true,
+  },
+  reactStrictMode: false,
+  swcMinify: true,
+  output: 'standalone',
+  transpilePackages: ['db', 'hooks', 'lib', 'ui'],
 };
