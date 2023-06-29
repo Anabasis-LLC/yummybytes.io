@@ -1,5 +1,5 @@
 {
-  "name": "hooks",
+  "name": "lib",
   "private": true,
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -8,7 +8,8 @@
     "check-types": "../../node_modules/.bin/tsc --noEmit"
   },
   "dependencies": {
-    "lib": "workspace:^"
+    "@tanstack/react-query": "^4.29.19",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",

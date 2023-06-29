@@ -23,7 +23,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "turbo": "^1.10.6",
-    "typescript": "^5.1.5"
+    "typescript": "^5.1.6"
   },
   "lint-staged": {
     "apps/web/**/*.{tsx,ts}": [
